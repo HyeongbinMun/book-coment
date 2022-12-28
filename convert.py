@@ -30,8 +30,9 @@ def csvtotext(args):
                 subject = 'id' + '\t' + 'document' + '\n'
                 f.write(subject)
 
+                label = '0'
                 content = data_list['Content'][i].replace('\n', ' ')
-                data = str(data_list['ID'][i]) + '\t' + content + '\t' + '\n'
+                data = str(data_list['ID'][i]) + '\t' + content + '\t' + label + '\n'
                 f.write(data)
         f.close()
 
