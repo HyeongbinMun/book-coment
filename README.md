@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ```
 
 4. train
- - train하기 위한 txt 생성
+ - train하기 위한 txt 생성(예시는 data directory 참고)
 ```python
 python convert.py \
 --data_path 'data_path/train.xlsx' \
@@ -60,7 +60,9 @@ python convert.py \
 ```python
 python train.py \
 --train_path 'data_path/train.txt' \
---val_path   'data_path/val.txt'
+--val_path   'data_path/val.txt'   \
+--save_path './result/'
 ```
 
+5. test
 
