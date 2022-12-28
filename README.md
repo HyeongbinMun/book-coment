@@ -2,6 +2,7 @@
 
 ## Introduce
 본 문서는 book comet 감정 분류 모델 학습 및 평가에 대한 벤치마크이다.
+base git code : https://github.com/SKTBrain/KoBERT
 
 ## Installation
 환경 설정은 docker를 통해 구현하였으며 환경 설정을 하기 위해서는 아래와 같은 패키지 설치가 필요하다.
