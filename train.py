@@ -72,15 +72,16 @@ if __name__ == '__main__':
     parser.add_argument('--max_grad_norm', type=int, default=1)
     parser.add_argument('--log_interval', type=int, default=200)
     parser.add_argument('--learning_rate', type=float, default=1e-5)
-    parser.add_argument('-data_path', '--data_path', type=str, default='/workspace/data/')
+    parser.add_argument('--train_path', type=str, default='/workspace/data/train.txt')
+    parser.add_argument('--val_path', type=str, default='/workspace/data/val.txt')
     parser.add_argument('-save_path', '--save_path', type=str, default='/workspace/result')
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     bertmodel, vocab = get_pytorch_kobert_model(cachedir=".cache")
 
-    dataset_train = nlp.data.TSVDataset("/workspace/data/train.txt", field_indices=[1, 2], num_discard_samples=1)
-    dataset_test = nlp.data.TSVDataset("/workspace/data/val.txt", field_indices=[1, 2], num_discard_samples=1)
+    dataset_train = nlp.data.TSVDataset(args.train_path, field_indices=[1, 2], num_discard_samples=1)
+    dataset_test = nlp.data.TSVDataset(args.val_path, field_indices=[1, 2], num_discard_samples=1)
 
     tokenizer = get_tokenizer()
     tok = nlp.data.BERTSPTokenizer(tokenizer, vocab, lower=False)
