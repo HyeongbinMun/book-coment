@@ -65,4 +65,9 @@ python train.py \
 ```
 
 5. test
-
+```python
+python test.py \
+--model_path 'result/last.pt' \
+--test_path 'data_path/test.txt' \
+--save_path './result/'
+```
