@@ -66,15 +66,15 @@ class BERTClassifier(nn.Module):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--max_len', type=int, default=64)
-    parser.add_argument('--batch_size', type=int, default=128)
+    parser.add_argument('--batch_size', type=int, default=80)
     parser.add_argument('--warmup_ratio', type=float, default=0.1)
-    parser.add_argument('--num_epochs', type=int, default=50)
+    parser.add_argument('--num_epochs', type=int, default=200)
     parser.add_argument('--max_grad_norm', type=int, default=1)
     parser.add_argument('--log_interval', type=int, default=200)
     parser.add_argument('--learning_rate', type=float, default=1e-5)
     parser.add_argument('--train_path', type=str, default='/workspace/data/train.txt')
     parser.add_argument('--val_path', type=str, default='/workspace/data/val.txt')
-    parser.add_argument('-save_path', '--save_path', type=str, default='/workspace/result')
+    parser.add_argument('-save_path', '--save_path', type=str, default='/workspace/result/')
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -145,5 +145,5 @@ if __name__ == '__main__':
         if loss < best_te_loss:
             best_te_loss = loss
             best_ep = e
-            torch.save(model.state_dict(), args.save_path + "best_model.pt")
-        torch.save(model.state_dict(), args.save_path + "last_model.pt")
+            torch.save(model.state_dict(), args.save_path + "best.pt")
+        torch.save(model.state_dict(), args.save_path + "last.pt")

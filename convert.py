@@ -15,11 +15,11 @@ def csvtotext(args):
         save_path = data_path + file_name + '.txt'
         f = open(save_path, 'w')
 
+        subject = 'id' + '\t' + 'document' + '\t' + 'label' + '\n'
+        f.write(subject)
+
         for i in range(len(data_list['Content'])):
             if data_type == 'train':
-                subject = 'id' + '\t' + 'document' + '\t' + 'label' + '\n'
-                f.write(subject)
-
                 if data_list['label'][i] == 'N': label = '0'
                 elif data_list['label'][i] == 'P': label = '1'
                 else: label = '2'
@@ -27,9 +27,6 @@ def csvtotext(args):
                 data = str(data_list['ID'][i]) + '\t' + content + '\t' + label + '\n'
                 f.write(data)
             else:
-                subject = 'id' + '\t' + 'document' + '\n'
-                f.write(subject)
-
                 label = '0'
                 content = data_list['Content'][i].replace('\n', ' ')
                 data = str(data_list['ID'][i]) + '\t' + content + '\t' + label + '\n'
@@ -38,8 +35,8 @@ def csvtotext(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data_path', type=str, default='/workspace/data/train.xlsx')
-    parser.add_argument('--data_type', type=str, default='test', help='train or test')
+    parser.add_argument('--data_path', type=str, default='/workspace/data/')
+    parser.add_argument('--data_type', type=str, default='train', help='train or test')
     args = parser.parse_args()
 
     csvtotext(args)
