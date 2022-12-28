@@ -1,0 +1,35 @@
+version: '2.3'
+  
+services:
+  main:
+    container_name: kobert
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    runtime: nvidia
+    restart: always
+    env_file:
+      - "docker-compose-env/main.env"
+    volumes:
+      - type: volume
+        source: nfs_shared
+        target: /nfs_shared
+        volume:
+          nocopy: true
+      - "/media/mmlab/hdd:/hdd"
+    expose:
+      - "8000"
+    ports:
+      - "30000:22"
+      - "30001:6006"
+      - "30002:8000"
+    ipc: host
+    stdin_open: true
+    tty: true
+
+volumes:
+  nfs_shared:
+    driver_opts:
+      type: "nfs"
+      o: "addr=mldisk.sogang.ac.kr,nolock,soft,rw"
+      device: ":/volume2/nfs_shared"
