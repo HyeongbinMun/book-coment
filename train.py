@@ -71,7 +71,7 @@ if __name__ == '__main__':
     parser.add_argument('--num_epochs', type=int, default=200)
     parser.add_argument('--max_grad_norm', type=int, default=1)
     parser.add_argument('--log_interval', type=int, default=200)
-    parser.add_argument('--learning_rate', type=float, default=1e-5)
+    parser.add_argument('--learning_rate', type=float, default=1e-6)
     parser.add_argument('--train_path', type=str, default='/workspace/data/train.txt')
     parser.add_argument('--val_path', type=str, default='/workspace/data/val.txt')
     parser.add_argument('-save_path', '--save_path', type=str, default='/workspace/result/')
