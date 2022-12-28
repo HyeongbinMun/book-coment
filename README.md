@@ -34,12 +34,12 @@ docker-compose up -d                # 생성
 docker attach [CONTAINER_NAME]      # 접속
 ```
 
-환경 변경 후 container 재적용 실행 command(단 이전의 작업이 날아갈 수 있음)
+ - 환경 변경 후 container 재적용 실행 command(단 이전의 작업이 날아갈 수 있음)
 ```python
 docker-compose up -d --build
 ```
 
-ssh port 접근 이외에 docker container 다중 접속
+ - ssh port 접근 이외에 docker container 다중 접속
 ```python
 docker exec -it [CONTAINER_NAME] bash
 ```
